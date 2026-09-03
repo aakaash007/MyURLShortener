@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: linkmint
+    runtime: python
+    plan: free
+    buildCommand: pip install .
+    startCommand: alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: PUBLIC_BASE_URL
+        sync: false
+      - key: ENVIRONMENT
+        value: production
+      - key: PYTHON_VERSION
+        value: 3.12.7
