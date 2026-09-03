@@ -112,3 +112,4 @@ The frontend is served by FastAPI, so one Render service hosts both frontend and
 backend. Render's free filesystem is ephemeral, but all link data remains in Neon.
 Free services can sleep or enforce usage limits and therefore do not provide a
 commercial uptime guarantee.
+

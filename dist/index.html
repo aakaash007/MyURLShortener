@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Create clean, dependable short links in seconds with LinkMint."
+    />
+    <meta property="og:title" content="LinkMint — Short links, made simple" />
+    <meta
+      property="og:description"
+      content="Turn long URLs into clean links that are ready to share."
+    />
+    <meta property="og:image" content="http://127.0.0.1:8000/assets/og.png" />
+    <meta name="linkmint-api-base" content="http://127.0.0.1:8000" />
+    <meta name="theme-color" content="#102a2a" />
+    <title>LinkMint — Short links, made simple</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script src="assets/app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="LinkMint home">
+        <span class="brand-mark" aria-hidden="true">LM</span>
+        <span>LinkMint</span>
+      </a>
+      <a class="api-link" href="http://127.0.0.1:8000/docs">
+        API docs <span aria-hidden="true">↗</span>
+      </a>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <p class="eyebrow"><span></span> Fast, durable, private by design</p>
+        <h1 id="page-title">Long URL.<br /><em>Fresh start.</em></h1>
+        <p class="intro">
+          Create a clean link that is easier to share, remember, and trust.
+          No account required.
+        </p>
+
+        <form class="shorten-form" id="shorten-form" novalidate>
+          <label for="target-url">Paste your long URL</label>
+          <div class="input-row">
+            <input
+              id="target-url"
+              name="target_url"
+              type="url"
+              inputmode="url"
+              autocomplete="url"
+              placeholder="https://example.com/a-very-long-link"
+              required
+            />
+            <button id="submit-button" type="submit">
+              <span class="button-label">Shorten link</span>
+              <span class="button-arrow" aria-hidden="true">→</span>
+            </button>
+          </div>
+          <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+        </form>
+
+        <section class="result" id="result" aria-labelledby="result-title" hidden>
+          <div>
+            <p class="result-label" id="result-title">Your short link is ready</p>
+            <a id="short-url" href="#" target="_blank" rel="noopener noreferrer"></a>
+          </div>
+          <div class="result-actions">
+            <button class="secondary-button" id="copy-button" type="button">Copy</button>
+            <a class="icon-button" id="open-button" href="#" target="_blank" rel="noopener noreferrer">
+              Open <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </section>
+      </section>
+
+      <section class="trust-strip" aria-label="Product qualities">
+        <article>
+          <span class="feature-number">01</span>
+          <div>
+            <h2>Secure codes</h2>
+            <p>Unpredictable Base62 identifiers generated for every link.</p>
+          </div>
+        </article>
+        <article>
+          <span class="feature-number">02</span>
+          <div>
+            <h2>Fast redirects</h2>
+            <p>A direct database lookup gets visitors where they need to go.</p>
+          </div>
+        </article>
+        <article>
+          <span class="feature-number">03</span>
+          <div>
+            <h2>Built to last</h2>
+            <p>PostgreSQL keeps every mapping durable across deployments.</p>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <p>Mint a better link.</p>
+      <p>Built with FastAPI + PostgreSQL.</p>
+    </footer>
+  </body>
+</html>
+
