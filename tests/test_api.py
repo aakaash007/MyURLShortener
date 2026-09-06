@@ -125,6 +125,18 @@ def test_frontend_is_served(client: TestClient) -> None:
     assert "shorten-form" in response.text
 
 
+def test_api_docs_are_allowed_to_load_their_ui_assets(client: TestClient) -> None:
+    """Verify the public API docs can load Swagger UI under the site's CSP."""
+    response = client.get("/docs")
+
+    assert response.status_code == 200
+    assert "Swagger UI" in response.text
+    content_security_policy = response.headers["content-security-policy"]
+    assert "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net" in (
+        content_security_policy
+    )
+
+
 def test_health_and_readiness_are_available(client: TestClient) -> None:
     """Verify deployment health checks cover both web and database readiness."""
     assert client.get("/health").status_code == 204
@@ -195,4 +207,3 @@ def test_security_headers_are_attached(client: TestClient) -> None:
     assert response.headers["x-content-type-options"] == "nosniff"
     assert response.headers["x-frame-options"] == "DENY"
     assert "default-src 'self'" in response.headers["content-security-policy"]
-

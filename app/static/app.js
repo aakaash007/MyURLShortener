@@ -6,6 +6,7 @@ const result = document.querySelector("#result");
 const shortUrl = document.querySelector("#short-url");
 const copyButton = document.querySelector("#copy-button");
 const openButton = document.querySelector("#open-button");
+const journeyToggles = document.querySelectorAll(".journey-toggle");
 const apiBaseUrl = document
   .querySelector('meta[name="linkmint-api-base"]')
   .content.replace(/\/$/, "");
@@ -137,7 +138,28 @@ async function copyGeneratedLink() {
   }
 }
 
+/** Expand one API journey at a time while keeping the controls accessible. */
+function toggleJourney(selectedToggle) {
+  const selectedPanel = document.querySelector(
+    `#${selectedToggle.dataset.journeyTarget}`,
+  );
+  const shouldOpen = selectedToggle.getAttribute("aria-expanded") !== "true";
+
+  journeyToggles.forEach((toggle) => {
+    const panel = document.querySelector(`#${toggle.dataset.journeyTarget}`);
+    toggle.setAttribute("aria-expanded", "false");
+    panel.hidden = true;
+  });
+
+  if (shouldOpen) {
+    selectedToggle.setAttribute("aria-expanded", "true");
+    selectedPanel.hidden = false;
+  }
+}
+
 form.addEventListener("submit", handleSubmit);
 copyButton.addEventListener("click", copyGeneratedLink);
+journeyToggles.forEach((toggle) => {
+  toggle.addEventListener("click", () => toggleJourney(toggle));
+});
 registerShortenTool();
-

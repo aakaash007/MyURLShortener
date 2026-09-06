@@ -103,6 +103,47 @@
           </div>
         </article>
       </section>
+
+      <section class="journeys" aria-labelledby="journeys-title">
+        <h2 class="visually-hidden" id="journeys-title">Explore how LinkMint works</h2>
+        <div class="journey-links">
+          <button
+            class="journey-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="creation-journey"
+            data-journey-target="creation-journey"
+          >
+            <span class="journey-kicker">Create</span>
+            <span class="journey-question">How is a short link made?</span>
+            <span class="journey-arrow" aria-hidden="true">↓</span>
+          </button>
+          <button
+            class="journey-toggle journey-toggle-right"
+            type="button"
+            aria-expanded="false"
+            aria-controls="redirect-journey"
+            data-journey-target="redirect-journey"
+          >
+            <span class="journey-kicker">Redirect</span>
+            <span class="journey-question">How does a short link redirect?</span>
+            <span class="journey-arrow" aria-hidden="true">↓</span>
+          </button>
+        </div>
+
+        <div class="journey-panel" id="creation-journey" hidden>
+          <img
+            src="assets/diagrams/short-url-creation-flow.svg"
+            alt="Animated flowchart showing how LinkMint creates and stores a short URL through the browser, Render, FastAPI, and Neon PostgreSQL."
+          />
+        </div>
+        <div class="journey-panel" id="redirect-journey" hidden>
+          <img
+            src="assets/diagrams/short-url-redirect-flow.svg"
+            alt="Animated flowchart showing how LinkMint resolves a short URL through Render and FastAPI, looks it up in Neon PostgreSQL, and redirects the browser."
+          />
+        </div>
+      </section>
     </main>
 
     <footer>
@@ -111,4 +152,3 @@
     </footer>
   </body>
 </html>
-

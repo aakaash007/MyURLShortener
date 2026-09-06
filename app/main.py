@@ -67,13 +67,23 @@ def create_app(
     async def add_security_headers(request: Request, call_next) -> Response:
         """Attach conservative browser security headers to every response."""
         response = await call_next(request)
-        response.headers["Content-Security-Policy"] = (
-            "default-src 'self'; "
-            "style-src 'self' https://fonts.googleapis.com; "
-            "font-src https://fonts.gstatic.com; "
-            "script-src 'self'; connect-src 'self'; "
-            "img-src 'self' data:; base-uri 'self'; frame-ancestors 'none'"
-        )
+        if request.url.path in {"/docs", "/redoc"}:
+            # FastAPI's documentation UI loads its own bundled assets from jsDelivr.
+            response.headers["Content-Security-Policy"] = (
+                "default-src 'self'; "
+                "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; "
+                "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; "
+                "img-src 'self' data: https://fastapi.tiangolo.com; "
+                "base-uri 'self'; frame-ancestors 'none'"
+            )
+        else:
+            response.headers["Content-Security-Policy"] = (
+                "default-src 'self'; "
+                "style-src 'self' https://fonts.googleapis.com; "
+                "font-src https://fonts.gstatic.com; "
+                "script-src 'self'; connect-src 'self'; "
+                "img-src 'self' data:; base-uri 'self'; frame-ancestors 'none'"
+            )
         response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
         response.headers["X-Content-Type-Options"] = "nosniff"
         response.headers["X-Frame-Options"] = "DENY"
@@ -194,4 +204,3 @@ def create_app(
 
 
 app = create_app()
-
