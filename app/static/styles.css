@@ -426,10 +426,35 @@ h1 em {
 
 footer {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  gap: 24px;
   padding: 30px 0 44px;
   color: var(--ink-soft);
   font-size: 0.78rem;
+}
+
+footer p {
+  margin: 0;
+}
+
+.footer-repo {
+  margin-left: auto;
+  padding-bottom: 3px;
+  border-bottom: 1px solid currentColor;
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.footer-repo:hover,
+.footer-repo:focus-visible {
+  color: #287c63;
+}
+
+.footer-repo:focus-visible {
+  outline: 3px solid rgba(40, 124, 99, 0.22);
+  outline-offset: 4px;
 }
 
 @keyframes reveal {
@@ -523,8 +548,13 @@ footer {
   }
 
   footer {
+    align-items: flex-start;
     gap: 10px;
     flex-direction: column;
+  }
+
+  .footer-repo {
+    margin-left: 0;
   }
 }
 
