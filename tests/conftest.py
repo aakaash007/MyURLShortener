@@ -38,4 +38,3 @@ def client(engine: Engine, settings: Settings) -> Iterator[TestClient]:
     application = create_app(settings=settings, engine=engine)
     with TestClient(application) as test_client:
         yield test_client
-

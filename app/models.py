@@ -30,4 +30,3 @@ class Link(Base):
         default=True,
         server_default="true",
     )
-

@@ -31,4 +31,3 @@ class LinkRepository:
             or_(Link.expires_at.is_(None), Link.expires_at > func.now()),
         )
         return self.session.scalar(statement)
-

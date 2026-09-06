@@ -21,4 +21,3 @@ class LinkResponse(BaseModel):
     short_code: str
     short_url: str
     target_url: HttpUrl
-

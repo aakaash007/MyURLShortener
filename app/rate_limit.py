@@ -26,4 +26,3 @@ class SlidingWindowRateLimiter:
                 return False, retry_after
             timestamps.append(now)
             return True, 0
-

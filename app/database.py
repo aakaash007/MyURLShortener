@@ -30,4 +30,3 @@ class Database:
     def dispose(self) -> None:
         """Release pooled database connections during application shutdown."""
         self.engine.dispose()
-

@@ -132,9 +132,7 @@ def test_api_docs_are_allowed_to_load_their_ui_assets(client: TestClient) -> Non
     assert response.status_code == 200
     assert "Swagger UI" in response.text
     content_security_policy = response.headers["content-security-policy"]
-    assert "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net" in (
-        content_security_policy
-    )
+    assert "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net" in (content_security_policy)
 
 
 def test_health_and_readiness_are_available(client: TestClient) -> None:

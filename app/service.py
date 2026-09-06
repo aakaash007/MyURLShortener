@@ -29,4 +29,3 @@ def create_short_link(
         if repository.insert(short_code, target_url):
             return short_code
     raise CodeGenerationExhausted
-

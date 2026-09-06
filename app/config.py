@@ -56,4 +56,3 @@ class Settings(BaseSettings):
 def load_settings() -> Settings:
     """Build validated settings for the current process environment."""
     return Settings()
-

@@ -34,4 +34,3 @@ def test_public_base_url_must_be_an_origin() -> None:
             public_base_url="https://go.example.com/prefix?source=bad",
             environment="production",
         )
-

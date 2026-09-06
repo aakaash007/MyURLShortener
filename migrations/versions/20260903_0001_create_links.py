@@ -42,4 +42,3 @@ def upgrade() -> None:
 def downgrade() -> None:
     """Remove the links table created by this migration."""
     op.drop_table("links")
-
